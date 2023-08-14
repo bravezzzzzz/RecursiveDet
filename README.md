@@ -15,7 +15,7 @@ This paper investigates the region-based object detectors.
 
    b) Centerness-based PE is proposed to distinguish the RoI feature element and dynamic kernels at different positions within the bounding box.
 
-### The codes will be release soon!
+### The codes will be released soon!
 
 ## Citing
 
