@@ -1,0 +1,28 @@
+_BASE_: "Base-SparseRCNN.yaml"
+MODEL:
+  WEIGHTS: "swin_tiny_patch4_window7_224_d2.pth"
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 50
+  BACKBONE:
+    NAME: "build_swint_fpn_backbone"
+  SWINT:
+    OUT_FEATURES: ["stage2", "stage3", "stage4", "stage5"]
+  FPN:
+    IN_FEATURES: ["stage2", "stage3", "stage4", "stage5"]
+  SparseRCNN:
+    NUM_PROPOSALS: 100
+    NUM_CLASSES: 80
+DATASETS:
+  TRAIN: ("coco_2017_train",)
+  TEST:  ("coco_2017_val",)
+#  TEST:  ("coco_2017_test-dev",)
+SOLVER:
+  IMS_PER_BATCH: 2
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000
+INPUT:
+  CROP:
+    ENABLED: True
+  FORMAT: "RGB"
+OUTPUT_DIR: output/sparsercnn_swint_300pro_3x

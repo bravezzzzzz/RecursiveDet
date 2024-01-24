@@ -1,0 +1,28 @@
+_BASE_: "Base-SparseRCNN.yaml"
+MODEL:
+  WEIGHTS: "detectron2://ImageNetPretrained/torchvision/R-50.pkl"
+  RESNETS:
+    DEPTH: 50
+    STRIDE_IN_1X1: False
+  SparseRCNN:
+    NUM_PROPOSALS: 500
+    NUM_CLASSES: 1
+DATASETS:
+  TRAIN: ("CrowdHuman_train",)
+  TEST:  ("CrowdHuman_val",)
+SOLVER:
+  IMS_PER_BATCH: 2
+  STEPS: (300000,) # 15000 / 2 = 7500
+  MAX_ITER: 375000
+  CHECKPOINT_PERIOD: 5000
+TEST:
+  EVAL_PERIOD: 5000
+INPUT:
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1500
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TRAIN: 1500
+  CROP:
+    ENABLED: False
+  FORMAT: "RGB"
+OUTPUT_DIR: "/media/lab308/c06b8ee9-baa0-4d90-845c-51b2bdc44856/SparseR-CNN1/projects/SparseR-CNN/output/crowdhuman"
