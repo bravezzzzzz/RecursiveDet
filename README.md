@@ -15,7 +15,7 @@ This paper investigates the region-based object detectors.
 
    b) Centerness-based PE is proposed to distinguish the RoI feature element and dynamic kernels at different positions within the bounding box.
 
-### The codes are released at 20240124.
+### The codes are released.
 
 ## Installation
 The codebases are built on top of [Detectron2](https://github.com/facebookresearch/detectron2) and [SparseR-CNN](https://github.com/PeizeSun/SparseR-CNN).
